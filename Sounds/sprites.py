@@ -1,4 +1,4 @@
-# File created by: Chris Cozort
+# File created by: Zander Collins
 
 import pygame as pg
 
