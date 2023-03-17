@@ -10,6 +10,7 @@ import os
 # import settings
 from settings import *
 from sprites import *
+from random import randint
 # from pg.sprite import Sprite
 
 # set up assets folders
@@ -20,6 +21,7 @@ def get_mouse_now():
     x,y = pg.mouse.get_pos()
     return (x,y)
 
+vec = pg.math.Vector2
 
 # init pg and create windowo
 pg.init()
@@ -36,6 +38,13 @@ pewpews = pg.sprite.Group()
 # player is instantiated here
 player = Player()
 invader = Mob()
+invader.vel = vec(randint(1,8), randint(1,8))
+
+for i in range(0,10):
+    m = Mob()
+    m.vel = vec(randint(1,8), randint(1,8))
+    all_sprites.add(m)
+    enemies.add(m)
 
 # testSprite = Sprite()
 # testSprite.image = pg.Surface((50,50))
@@ -61,10 +70,12 @@ while RUNNING:
     ### update section of game loop (if updates take longer the 1/30th of a second, you will get laaaaag...)
     all_sprites.update()
 
+    '''
     blocks_hit_list = pg.sprite.spritecollide(player, enemies, True)
     for block in blocks_hit_list:
         # print(enemies)
         pass
+    '''
     ### draw and render section of game loop
     screen.fill(BLUE)
     all_sprites.draw(screen)

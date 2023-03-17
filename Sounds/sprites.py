@@ -58,26 +58,20 @@ class Mob(Sprite):
         self.cofric = 0.1
         self.canjump = False
     def behavior(self):
-        # acc go up
-        self.acc.y = -MOB_ACC
-        # self.acc.x = -MOB_ACC 
-        # self.acc.y = MOB_ACC
-        # self.acc.x = MOB_ACC
-        if self.rect.x > WIDTH:
-            print("I'm off the right screen...")
         if self.rect.x < 0:
-            print("I'm off the left screen...")
+            self.vel.x *= -1
+            self.pos.x += self.vel.x
         if self.rect.y < 0:
-            print("I'm off the top screen...")
-            # reduces vel
-            self.vel *= -1
-            self.pos.y <= 0
+            self.vel.y *= -1
+            self.pos.y += self.vel.y
+        if self.rect.x > WIDTH:
+            self.vel.x *= -1  
+            self.pos.x += self.vel.x
         if self.rect.y > HEIGHT:
-            print("I'm off the bottom screen...")
+            self.vel.y *= -1
+            self.pos.y += self.vel.y
     def update(self):
-        self.acc = self.vel * MOB_FRICTION
         self.behavior()
-        self.vel += self.acc
-        self.pos += self.vel + 0.5 * self.acc
+        self.pos += self.vel
         self.rect.center = self.pos
         
