@@ -6,7 +6,16 @@ from pygame.sprite import Sprite
 
 from settings import *
 
+import os 
+
+from os import path
+
 vec = pg.math.Vector2
+
+
+game_folder = os.path.dirname(__file__)
+img_folder = os.path.join(game_folder, "Images")
+
 
 # create a player
 
