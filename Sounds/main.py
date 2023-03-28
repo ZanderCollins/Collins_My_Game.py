@@ -37,12 +37,13 @@ class Game:
             # an argument
             self.player = Player(self)
             # instantiate a platform
-            self.plat1 = Platform(0,HEIGHT-25, WIDTH, )
+            self.plat1 = Platform(0,HEIGHT-25, WIDTH, 25)
             self.all_sprites.add(self.player)
             self.all_sprites.add(self.plat1)
-            for i in range(1,10):
-                e = Mob()
-                self.all_sprites.add(e)
+            self.platforms.add(self.plat1)
+            # for i in range(1,10):
+            #     e = Mob()
+            #     self.all_sprites.add(e)
             self.run()  
     def run(self):
         self.playing = True
@@ -74,6 +75,12 @@ class Game:
     #     return (x,y)
     def update(self):
         self.all_sprites.update()
+        if self.player.vel.y > 0:
+            hits = pg.sprite.spritecollide(self.player, self.platforms, False)
+            if hits:
+                print("i've collide with a platform")
+                self.player.pos.y = hits[0].rect.top
+                self.player.vel.y = 0
     def draw(self):
         self.screen.fill(BLUE)
         self.draw_text("Hello there!", 42, WHITE, WIDTH/2, HEIGHT/10)
