@@ -10,12 +10,9 @@ import os
 
 from os import path
 
+from random import randint
+
 vec = pg.math.Vector2
-
-
-game_folder = os.path.dirname(__file__)
-img_folder = os.path.join(game_folder, "Images")
-
 
 # create a player
 
@@ -62,7 +59,7 @@ class Mob(Sprite):
         self.image.fill(RED)
         self.rect = self.image.get_rect()
         self.pos = vec(WIDTH/2, HEIGHT/2)
-        self.vel = vec(0,0)
+        self.vel = vec(randint(1,5,randint(1,5)))
         self.acc = vec(0,0)
         self.cofric = 0.1
         self.canjump = False
@@ -83,4 +80,13 @@ class Mob(Sprite):
         self.behavior()
         self.pos += self.vel
         self.rect.center = self.pos
+
+class Platform(Sprite):
+    def __init__(self, x, y, w, h):
+        Sprite.__init__(self)
+        self.image = pg.Surface((w,h))
+        self.image.fill(GREEN)
+        self.rect = self.image.get_rect()
+        self.x = x
+        self.y = y
         
