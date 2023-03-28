@@ -1,12 +1,10 @@
 # File created by: Zander Collins
 
-# testing changes
-
-# import libraries
-# test comment for git
 import pygame as pg
 import random
 import os
+
+# need this to create file paths effectively
 from os import path
 
 # import settings
@@ -15,45 +13,55 @@ from sprites import *
 from random import randint
 # from pg.sprite import Sprite
 
+# set up assets folders
 game_folder = os.path.dirname(__file__)
-img_folder = os.path.join(game_folder, "Images")
+img_folder = os.path.join(game_folder, "images")
 
-class Game: 
+# create the game class to organize game content better...
+class Game:
+    # inits the pygame stuff including setting up screen/display area
     def __init__(self):
         pg.init()
         pg.mixer.init()
-        self.screen = pg.display.set_mode((WIDTH,HEIGHT)) 
-        pg.display.set_caption("My Game")
+        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+        pg.display.set_caption("My Game...")
         self.clock = pg.time.Clock()
         self.running = True
-
+    # method to create a new game...
     def new(self):
-            self.score = 0 
+            self.score = 0
             self.all_sprites = pg.sprite.Group()
-            self.platforms = pg.sprite.Group() 
+            self.platforms = pg.sprite.Group()
             self.enemies = pg.sprite.Group()
+            # instantiates player class from sprites file, and passes this game class as
+            # an argument
             self.player = Player(self)
+            # instantiate a platform
+            self.plat1 = Platform(0,HEIGHT-25, WIDTH, )
             self.all_sprites.add(self.player)
+            self.all_sprites.add(self.plat1)
             for i in range(1,10):
                 e = Mob()
                 self.all_sprites.add(e)
-            self.run()
-
+            self.run()  
     def run(self):
-        self.playing = True 
-        while self.playing: 
+        self.playing = True
+        while self.playing:
             self.clock.tick(FPS)
             self.events()
             self.update()
             self.draw()
     def events(self):
+        # Game Loop - events
         for event in pg.event.get():
-            if event.type == pg.Quit:
+            # check for closing window
+            if event.type == pg.QUIT:
                 if self.playing:
-                    self.running = False 
+                    self.playing = False
+                self.running = False
             if event.type == pg.KEYDOWN:
-                    if event.key == pg.K_SPACE:
-                            self.player.jump()
+                if event.key == pg.K_SPACE:
+                    self.player.jump()
     def draw_text(self, text, size, color, x, y):
         font_name = pg.font.match_font('arial')
         font = pg.font.Font(font_name, size)
@@ -71,16 +79,14 @@ class Game:
         self.draw_text("Hello there!", 42, WHITE, WIDTH/2, HEIGHT/10)
         self.all_sprites.draw(self.screen)
         pg.display.flip()
-    def get_mouse_now():
-        x,y = pg.mouse.get_pos()
-        return (x,y)
 
-vec = pg.math.Vector2 
+vec = pg.math.Vector2
+
 # game loop
+
 g = Game()
 
 while g.running:
     g.new()
 
 pg.quit()
-
