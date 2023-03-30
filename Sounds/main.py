@@ -1,5 +1,11 @@
 # File created by: Zander Collins
 
+'''
+My goal: to create 2 moving platforms with different colors 
+Reach goal: there will be coins on the platforms that go away when you land on the platforms 
+'''
+
+
 # import libraries
 # test comment for git 
 import pygame as pg

@@ -10,7 +10,6 @@ from random import randint
 
 vec = pg.math.Vector2
 
-
 # create a player
 
 class Player(Sprite):
@@ -45,7 +44,6 @@ class Player(Sprite):
             self.vel.y = -PLAYER_JUMP
     def update(self):
         self.acc = vec(0, PLAYER_GRAV)
-        
         self.acc.x = self.vel.x * PLAYER_FRICTION
         self.input()
         self.vel += self.acc
