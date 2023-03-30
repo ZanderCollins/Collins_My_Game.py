@@ -1,5 +1,7 @@
 # File created by: Zander Collins
 
+# import libraries
+# test comment for git 
 import pygame as pg
 import random
 import os
@@ -38,9 +40,15 @@ class Game:
             self.player = Player(self)
             # instantiate a platform
             self.plat1 = Platform(0,HEIGHT-25, WIDTH, 25)
+            self.plat2 = Platform(200,400, WIDTH, 25)
+            self.plat3 = Platform(50,500, 500, 25)
             self.all_sprites.add(self.player)
             self.all_sprites.add(self.plat1)
+            self.all_sprites.add(self.plat2)
+            self.all_sprites.add(self.plat3)
             self.platforms.add(self.plat1)
+            self.platforms.add(self.plat2)
+            self.platforms.add(self.plat3)
             # for i in range(1,10):
             #     e = Mob()
             #     self.all_sprites.add(e)
@@ -78,7 +86,7 @@ class Game:
         if self.player.vel.y > 0:
             hits = pg.sprite.spritecollide(self.player, self.platforms, False)
             if hits:
-                print("i've collide with a platform")
+                # print("i've collide with a platform")
                 self.player.pos.y = hits[0].rect.top
                 self.player.vel.y = 0
     def draw(self):

@@ -36,13 +36,13 @@ class Player(Sprite):
         #     self.acc.y = PLAYER_ACC
         if keystate[pg.K_d]:
             self.acc.x = PLAYER_ACC
-    # def jump(self):
-    #     # jump only if standing on a platform
-    #     self.rect.x += 1
-    #     hits = pg.sprite.spritecollide(self, self.game.platforms, False)
-    #     self.rect.x -= 1
-    #     if hits:
-    #         self.vel.y = -PLAYER_JUMP
+    def jump(self):
+        # jump only if standing on a platform
+        self.rect.x += 1
+        hits = pg.sprite.spritecollide(self, self.game.platforms, False)
+        self.rect.x -= 1
+        if hits:
+            self.vel.y = -PLAYER_JUMP
     def update(self):
         self.acc = vec(0, PLAYER_GRAV)
         

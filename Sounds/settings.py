@@ -1,5 +1,6 @@
 # File created by: Zander Collins
 
+
 # screen dimensions
 WIDTH = 800
 HEIGHT = 600
@@ -15,8 +16,7 @@ MOB_ACC = 2
 PLAYER_FRICTION = -0.12
 MOB_FRICTION = -0.12
 PLAYER_JUMP = 20
-PLAYER_GRAV = 9.8
-
+PLAYER_GRAV = 0.98
 # colors
 BLACK = (0,0,0)
 WHITE = (255,255,255)
