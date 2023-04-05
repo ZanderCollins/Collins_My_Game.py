@@ -87,3 +87,26 @@ class Platform(Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
+class Moving_Platform(Sprite):
+    def __init__(self, x, y, w, h):
+        Sprite.__init__(self)
+        self.image = pg.Surface((w,h))
+        self.image.fill(GREEN)
+        self.rect = self.image.get_rect()
+        self.pos = vec(WIDTH/2, HEIGHT/2)
+        self.vel = vec(5,0)
+        self.acc = vec(0,0)
+        self.cofric = 0.1
+        self.canjump = False
+    def behavior(self):
+        if self.rect.x > WIDTH or self.rect.x < 0:
+            self.vel *= -1
+    def update(self):
+        self.behavior()
+        self.pos += self.vel
+        self.rect.center = self.pos
+        
+        
+    
+        
