@@ -92,13 +92,14 @@ class Moving_Platform(Sprite):
     def __init__(self, x, y, w, h):
         Sprite.__init__(self)
         self.image = pg.Surface((w,h))
-        self.image.fill(GREEN)
+        self.image.fill(RED)
         self.rect = self.image.get_rect()
-        self.pos = vec(WIDTH/2, HEIGHT/2)
-        self.vel = vec(5,0)
+        self.rect.x = x
+        self.rect.y = y
+        self.pos = vec(self.rect.x, self.rect.y)
+        self.vel = vec(randint(4,9),0)
         self.acc = vec(0,0)
         self.cofric = 0.1
-        self.canjump = False
     def behavior(self):
         if self.rect.x > WIDTH or self.rect.x < 0:
             self.vel *= -1

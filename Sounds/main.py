@@ -46,18 +46,21 @@ class Game:
             self.player = Player(self)
             # instantiate a platform
             self.plat1 = Platform(0,HEIGHT-25, WIDTH, 25)
-            self.plat2 = Moving_Platform(50, 600, 200, 25)
-            self.plat3 = Moving_Platform(50, 400, 200, 25)
-            self.plat4 = Moving_Platform(50, 200, 200, 25)
+            self.plat2 = Moving_Platform(WIDTH-400,300, 200, 25)
+            self.plat3 = Moving_Platform(WIDTH-400,450, 200, 25)
+            self.plat4 = Moving_Platform(WIDTH-400,150, 200, 25)
+            self.plat5 = Platform(0,0, WIDTH, 25)
             self.all_sprites.add(self.player)
             self.all_sprites.add(self.plat1)
             self.all_sprites.add(self.plat2)
             self.all_sprites.add(self.plat3)
             self.all_sprites.add(self.plat4)
+            self.all_sprites.add(self.plat5)
             self.platforms.add(self.plat1)
             self.platforms.add(self.plat2)
             self.platforms.add(self.plat3)
             self.platforms.add(self.plat4)
+            self.platforms.add(self.plat5)
             # for i in range(1,10):
             #     e = Mob()
             #     self.all_sprites.add(e)
@@ -98,9 +101,10 @@ class Game:
                 # print("i've collide with a platform")
                 self.player.pos.y = hits[0].rect.top
                 self.player.vel.y = 0
+        
     def draw(self):
         self.screen.fill(BLUE)
-        self.draw_text("Hello there!", 42, WHITE, WIDTH/2, HEIGHT/10)
+        self.draw_text("Reach the top!", 42, WHITE, WIDTH/2, HEIGHT/10)
         self.all_sprites.draw(self.screen)
         pg.display.flip()
 
