@@ -45,6 +45,8 @@ class Game:
             # an argument
             self.player = Player(self)
             # instantiate a platform
+            # instantiates the different types of platforms 
+            # instantiates between the moving and still platforms 
             self.plat1 = Platform(0,HEIGHT-25, WIDTH, 25)
             self.plat2 = Moving_Platform(WIDTH-400,300, 200, 25)
             self.plat3 = Moving_Platform(WIDTH-400,450, 200, 25)
@@ -101,7 +103,7 @@ class Game:
                 # print("i've collide with a platform")
                 self.player.pos.y = hits[0].rect.top
                 self.player.vel.y = 0
-        
+    # draws text on the screen 
     def draw(self):
         self.screen.fill(BLUE)
         self.draw_text("Reach the top!", 42, WHITE, WIDTH/2, HEIGHT/10)
